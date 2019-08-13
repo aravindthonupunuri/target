@@ -41,6 +41,10 @@ public class ItemService {
     {
         return itemDao.updateItem(mapTo(item));
     }
+    public void deleteItem(int item_Id){
+       itemDao.deleteItem(item_Id);
+
+    }
 
     public ItemDao getItemDao() {
         return itemDao;

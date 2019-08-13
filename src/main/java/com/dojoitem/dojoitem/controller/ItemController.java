@@ -33,10 +33,15 @@ public class ItemController {
     }
 
     @PutMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> updateItem(@PathVariable int item_id, @RequestBody Item itemRequest) {
+    public ResponseEntity<String> updateItem(@PathVariable int item_Id, @RequestBody Item itemRequest) {
         boolean state = itemService.updateItem(itemRequest);
         return new ResponseEntity<>("updatedItem" + state, HttpStatus.ACCEPTED);
 
+    }
+
+    @DeleteMapping(path = "item/{item_Id}")
+        public void deleteItem(@PathVariable int item_Id){
+itemService.deleteItem(item_Id);
     }
 
     public ItemService getItemService() {

@@ -42,6 +42,11 @@ public class ItemDao {
             return false;
         }
     }
+    public void deleteItem(int item_Id){
+        itemRepository.deleteById(item_Id);
+
+
+    }
 
     public void setItemRepository(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
