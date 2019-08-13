@@ -1,17 +1,24 @@
 package com.dojoitem.dojoitem.controller;
 
 import com.dojoitem.dojoitem.item.Item;
+import com.dojoitem.dojoitem.repository.ItemRepository;
 import com.dojoitem.dojoitem.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.List;
 
 @RestController
+@EnableSwagger2
 public class ItemController {
     @Autowired
     ItemService itemService;
+    @Autowired
+    ItemRepository itemRepository;
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
@@ -19,7 +26,11 @@ public class ItemController {
 
     public ItemController() {
     }
-
+    @GetMapping(path = "item", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Item> getAllItem()
+    {
+        return new ResponseEntity(itemService.getAllItem(), HttpStatus.OK);
+    }
     @GetMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> getItem(@PathVariable int item_Id) {
         Item item = itemService.getItem(item_Id);

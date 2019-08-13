@@ -3,13 +3,19 @@ package com.dojoitem.dojoitem.service;
 import com.dojoitem.dojoitem.dao.ItemDao;
 import com.dojoitem.dojoitem.item.Item;
 import com.dojoitem.dojoitem.item.ItemEntity;
+import com.dojoitem.dojoitem.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 //import com.dojoitem.dojoitem.item.*;
 @Service
 public class ItemService {
     @Autowired
     ItemDao itemDao;
+    @Autowired
+    ItemRepository itemRepository;
 
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
@@ -45,6 +51,11 @@ public class ItemService {
        itemDao.deleteItem(item_Id);
 
     }
+public  List<Item> getAllItem()
+{
+    List<ItemEntity> itemEntityList= itemRepository.findAll();
+    return (List<Item>)(List<?>)itemEntityList;
+}
 
     public ItemDao getItemDao() {
         return itemDao;
