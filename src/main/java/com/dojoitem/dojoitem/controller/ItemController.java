@@ -37,6 +37,12 @@ public class ItemController {
         return new ResponseEntity<>(item, HttpStatus.OK);
 
     }
+   @GetMapping(path = "item/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Item> getItembyName(@PathVariable String name) {
+       Item item = itemService.getItembyName(name);
+        return new ResponseEntity<>(item, HttpStatus.OK);
+
+   }
 
     @PostMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> addItem(@PathVariable int item_Id, @RequestBody Item itemRequest) {

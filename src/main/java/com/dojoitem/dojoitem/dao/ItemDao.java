@@ -28,6 +28,9 @@ public class ItemDao {
     public ItemEntity getItem(int itemKey){
         return itemRepository.getOne(itemKey);
     }
+    public ItemEntity getItembyName(String name){
+        return itemRepository.findByName(name);
+    }
     public ItemEntity addItem (ItemEntity itemEntity){
         itemRepository.save(itemEntity);
         return itemEntity;
