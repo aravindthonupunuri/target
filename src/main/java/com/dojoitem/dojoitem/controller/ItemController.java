@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @EnableSwagger2
@@ -25,6 +26,12 @@ public class ItemController {
     }
 
     public ItemController() {
+    }
+
+    @GetMapping(path = "item/name/{name}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Item> getItemByName(@PathVariable String name){
+        Item item = itemService.getItemByName(name);
+        return new ResponseEntity<>(item,HttpStatus.OK);
     }
     @GetMapping(path = "item", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> getAllItem()

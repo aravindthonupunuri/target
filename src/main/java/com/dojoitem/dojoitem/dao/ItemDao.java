@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Configuration
@@ -25,6 +26,7 @@ public class ItemDao {
         itemRepository.save(itemEntity);
         return itemEntity;
   }
+  public ItemEntity getItemByName(String name){return itemRepository.findByName(name);}
     public ItemEntity getItem(int itemKey){
         return itemRepository.getOne(itemKey);
     }
@@ -47,7 +49,11 @@ public class ItemDao {
 
 
     }
-
+public List<ItemEntity> getAllItem()
+    {
+        List<ItemEntity> itemEntityList = itemRepository.findAll();
+        return itemEntityList;
+    }
 
     public void setItemRepository(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;

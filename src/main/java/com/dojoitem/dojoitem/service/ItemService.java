@@ -14,8 +14,10 @@ import java.util.List;
 public class ItemService {
     @Autowired
     ItemDao itemDao;
-    @Autowired
-    ItemRepository itemRepository;
+   public Item getItemByName(String name){
+       ItemEntity itemEntity = itemDao.getItemByName(name);
+       return mapTo(itemEntity);
+   }
 
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
@@ -51,10 +53,12 @@ public class ItemService {
        itemDao.deleteItem(item_Id);
 
     }
-public  List<Item> getAllItem()
+public List<ItemEntity> getAllItem()
 {
-    List<ItemEntity> itemEntityList= itemRepository.findAll();
-    return (List<Item>)(List<?>)itemEntityList;
+//    List<ItemEntity> itemEntityList= itemRepository.findAll();
+    List<ItemEntity> itemEntityList = itemDao.getAllItem();
+   // return (List<Item>)(List<?>)itemEntityList;
+    return itemEntityList;
 }
 
     public ItemDao getItemDao() {
