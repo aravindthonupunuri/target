@@ -68,4 +68,8 @@ public List<ItemEntity> getAllItem()
     public void setItemDao(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
+    public Item getItembyName(String name){
+        ItemEntity itemEntity = itemDao.getItembyName(name);
+        return mapTo(itemEntity);
+    }
 }

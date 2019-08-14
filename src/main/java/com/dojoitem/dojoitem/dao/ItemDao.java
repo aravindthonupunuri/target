@@ -21,14 +21,17 @@ public class ItemDao {
 
     public ItemDao() {
     }
-  @Transactional
-  public ItemEntity createItem(ItemEntity itemEntity){
+    @Transactional
+    public ItemEntity createItem(ItemEntity itemEntity){
         itemRepository.save(itemEntity);
         return itemEntity;
-  }
-  public ItemEntity getItemByName(String name){return itemRepository.findByName(name);}
+    }
+    public ItemEntity getItemByName(String name){return itemRepository.findByName(name);}
     public ItemEntity getItem(int itemKey){
         return itemRepository.getOne(itemKey);
+    }
+    public ItemEntity getItembyName(String name){
+        return itemRepository.findByName(name);
     }
     public ItemEntity addItem (ItemEntity itemEntity){
         itemRepository.save(itemEntity);
@@ -49,7 +52,7 @@ public class ItemDao {
 
 
     }
-public List<ItemEntity> getAllItem()
+    public List<ItemEntity> getAllItem()
     {
         List<ItemEntity> itemEntityList = itemRepository.findAll();
         return itemEntityList;
