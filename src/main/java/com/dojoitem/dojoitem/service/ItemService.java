@@ -3,7 +3,6 @@ package com.dojoitem.dojoitem.service;
 import com.dojoitem.dojoitem.dao.ItemDao;
 import com.dojoitem.dojoitem.item.Item;
 import com.dojoitem.dojoitem.item.ItemEntity;
-import com.dojoitem.dojoitem.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,8 +67,5 @@ public List<ItemEntity> getAllItem()
     public void setItemDao(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
-    public Item getItembyName(String name){
-        ItemEntity itemEntity = itemDao.getItembyName(name);
-        return mapTo(itemEntity);
-    }
+
 }
