@@ -17,6 +17,10 @@ public class ItemService {
        ItemEntity itemEntity = itemDao.getItemByName(name);
        return mapTo(itemEntity);
    }
+    public List<ItemEntity> getByCategory(String category){
+        List<ItemEntity> itemEntityList = itemDao.getByCategory(category);
+        return  itemEntityList;
+    }
 
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
