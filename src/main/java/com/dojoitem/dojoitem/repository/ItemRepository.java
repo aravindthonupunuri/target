@@ -5,8 +5,12 @@ import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ItemRepository extends JpaRepository<ItemEntity, Integer> {
     ItemEntity findByName(String name);
+
+    List<ItemEntity> findByCategory(String category);
 
 }

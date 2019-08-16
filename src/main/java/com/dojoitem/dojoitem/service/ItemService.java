@@ -17,7 +17,17 @@ public class ItemService {
        ItemEntity itemEntity = itemDao.getItemByName(name);
        return mapTo(itemEntity);
    }
-
+    public List<ItemEntity> getAllItem()
+    {
+//    List<ItemEntity> itemEntityList= itemRepository.findAll();
+        List<ItemEntity> itemEntityList = itemDao.getAllItem();
+        // return (List<Item>)(List<?>)itemEntityList;
+        return itemEntityList;
+    }
+    public List<ItemEntity> getAllItemByCategory(String category) {
+       List<ItemEntity> itemEntityList = itemDao.getAllItemByCategory(category);
+        return itemEntityList;
+    }
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
@@ -52,13 +62,7 @@ public class ItemService {
        itemDao.deleteItem(item_Id);
 
     }
-public List<ItemEntity> getAllItem()
-{
-//    List<ItemEntity> itemEntityList= itemRepository.findAll();
-    List<ItemEntity> itemEntityList = itemDao.getAllItem();
-   // return (List<Item>)(List<?>)itemEntityList;
-    return itemEntityList;
-}
+
 
     public ItemDao getItemDao() {
         return itemDao;
@@ -67,5 +71,6 @@ public List<ItemEntity> getAllItem()
     public void setItemDao(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
+
 
 }

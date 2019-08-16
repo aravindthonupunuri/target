@@ -16,16 +16,27 @@ public class ItemServiceTest {
     @Autowired
     ItemService itemService;
     Item item;
+    Item i;
     @Before
     public void setup(){
         item = new Item(1234,"shirt","cloth","wear","htrto",true);
+       // i = new Item(1234566890,'FTYUHB',"DFGHJB","FGHJHGF","HGFFGH",true);
     }
     @Test
-    public void addItemDetailsTest()
+    public void updateItemDetailsTest()
     {
         itemService.addItem(item);
         Assert.assertTrue(itemService.updateItem(item));
 
+//        Assert.assertTrue(itemService.addItem(i),true);
+
+    }
+    @Test
+    public void getItemDetailsTest()
+    {
+
+        itemService.addItem(item);
+        Assert.assertEquals(item.getCategory(),itemService.getItem(1234).getCategory());
     }
 
 

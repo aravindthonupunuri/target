@@ -27,7 +27,12 @@ public class ItemController {
 
     public ItemController() {
     }
-
+   @GetMapping(path = "item/category/{category}",produces = MediaType.APPLICATION_JSON_VALUE)
+   public ResponseEntity<Item> getAllItemByCategory(@PathVariable String category)
+   {
+      // Item item =
+       return new ResponseEntity(itemService.getAllItemByCategory(category),HttpStatus.OK);
+   }
     @GetMapping(path = "item/name/{name}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> getItemByName(@PathVariable String name){
         Item item = itemService.getItemByName(name);
