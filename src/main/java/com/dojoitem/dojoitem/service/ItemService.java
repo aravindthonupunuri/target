@@ -17,7 +17,7 @@ public class ItemService {
        ItemEntity itemEntity = itemDao.getItemByName(name);
        return mapTo(itemEntity);
    }
-<<<<<<< HEAD
+
     public List<ItemEntity> getAllItem()
     {
 //    List<ItemEntity> itemEntityList= itemRepository.findAll();
@@ -29,13 +29,7 @@ public class ItemService {
        List<ItemEntity> itemEntityList = itemDao.getAllItemByCategory(category);
         return itemEntityList;
     }
-=======
-    public List<ItemEntity> getByCategory(String category){
-        List<ItemEntity> itemEntityList = itemDao.getByCategory(category);
-        return  itemEntityList;
-    }
 
->>>>>>> 20d52ded23b0ba29c834c88c93ede2cbcea161b4
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
     }

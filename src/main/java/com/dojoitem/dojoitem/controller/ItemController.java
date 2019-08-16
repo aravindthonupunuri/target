@@ -48,12 +48,7 @@ public class ItemController {
         Item item = itemService.getItem(item_Id);
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
-    @GetMapping(path = "item/category/{category}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Item> getByCategory(@PathVariable String category){
-        return new ResponseEntity(itemService.getByCategory(category), HttpStatus.OK);
-//        Item item = itemService.getByCategory(category);
-//        return new ResponseEntity<>(item,HttpStatus.OK);
-    }
+
 
     @PostMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> addItem(@PathVariable int item_Id, @RequestBody Item itemRequest) {
