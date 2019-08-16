@@ -27,6 +27,7 @@ public class ItemDao {
         return itemEntity;
     }
     public ItemEntity getItemByName(String name){return itemRepository.findByName(name);}
+
     public List<ItemEntity> getAllItem()
     {
         List<ItemEntity> itemEntityList = itemRepository.findAll();
@@ -36,6 +37,7 @@ public class ItemDao {
         List<ItemEntity> itemEntityList = itemRepository.findByCategory(category);
         return itemEntityList;
     }
+
     public ItemEntity getItem(int itemKey){
         return itemRepository.getOne(itemKey);
     }
@@ -58,6 +60,13 @@ public class ItemDao {
         itemRepository.deleteById(item_Id);
 
 
+    }
+
+
+    public List<ItemEntity> getByCategory(String category)
+    {
+        List<ItemEntity> itemEntityList = itemRepository.findByCategory(category);
+        return itemEntityList;
     }
 
 
