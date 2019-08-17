@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @Configuration
@@ -46,6 +47,20 @@ public class ItemDao {
         itemRepository.save(itemEntity);
         return itemEntity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemDao itemDao = (ItemDao) o;
+        return itemRepository.equals(itemDao.itemRepository);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemRepository);
+    }
+
     public boolean updateItem (ItemEntity itemEntity){
 
         if(itemRepository.existsById(itemEntity.getItemId())){

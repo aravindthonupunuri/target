@@ -2,6 +2,8 @@ package com.dojoitem.dojoitem.item;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class Item {
     @JsonProperty("itemId")
     private int itemId;
@@ -75,5 +77,23 @@ public class Item {
 
     public void setSellable(boolean sellable) {
         this.sellable = sellable;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return itemId == item.itemId &&
+                sellable == item.sellable &&
+                name.equals(item.name) &&
+                description.equals(item.description) &&
+                category.equals(item.category) &&
+                image_url.equals(item.image_url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId, name, description, category, image_url, sellable);
     }
 }
