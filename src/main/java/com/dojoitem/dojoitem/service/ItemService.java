@@ -60,9 +60,10 @@ public class ItemService {
     {
         return itemDao.updateItem(mapTo(item));
     }
-    public void deleteItem(int item_Id){
+    public Item deleteItem(int item_Id){
        itemDao.deleteItem(item_Id);
 
+        return null;
     }
 
 
