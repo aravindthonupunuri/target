@@ -24,6 +24,7 @@ public class ItemServiceTest {
     ItemService itemService;
 
     Item shirtItem;
+    Item shirt;
 
     @Before
     public void setup(){
