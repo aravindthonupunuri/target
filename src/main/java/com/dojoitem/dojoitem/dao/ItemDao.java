@@ -40,6 +40,8 @@ public class ItemDao {
     }
 
     public ItemEntity getItem(int itemKey){
+
+
         return itemRepository.getOne(itemKey);
     }
 

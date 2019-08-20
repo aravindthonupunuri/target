@@ -23,9 +23,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import javax.swing.text.html.parser.Entity;
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @Transactional
@@ -80,42 +81,24 @@ public class ItemServiceTest {
         Assert.assertEquals(expectedItem.hashCode(), addedItem.hashCode());
         Assert.assertTrue(expectedItem.equals(addedItem));
     }
-//    @Test
-//    public void deleteItemTest() {
-//        Item item = new Item();
-//        item.setItemId(35);
-//        item.setName("Nike");
-//        item.setDescription("Sneakers");
-//        item.setCategory("shoes");
-//        item.setImage_url("http://hsdg");
-//        item.setSellable(true);
-//        ItemEntity itemEntity = itemService.mapTo(item);
-//        //when(itemDao.deleteItem(35)).thenReturn(itemEntity);
-//        itemDao.deleteItem(35);
-//        Item expectedItem= null;
-//        Item deletedItem = itemService.deleteItem(35);
-//        Assert.assertEquals(expectedItem.hashCode(),deletedItem.hashCode());
-//        //Assert.assertTrue(expectedItem.equals(deletedItem));
-//          Assert.assertNull(itemEntity);
-//    }
+    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true);
+   @Test
+           public void deleteItemTest()
+   {
+       itemService.deleteItem(35);
+       verify(itemDao,times(1)).deleteItem(35);
+   }
 
-//          @Test
-//      public void getAllItemTest()  {
-//          Item item = new Item();
-//          item.setItemId(35);
-//          item.setName("Nike");
-//          item.setDescription("Sneakers");
-//          item.setCategory("shoes");
-//          item.setImage_url("http://hsdg");
-//          item.setSellable(true);
-//          ItemEntity itemEntity;
-//          List<ItemEntity> itemEntityList = (List<ItemEntity>) itemService.mapTo(item);
-//          when(itemDao.getAllItem()).thenReturn((List<ItemEntity>) itemEntityList);
-//          Item expectedItem = itemService.mapTo(itemEntityList);
-//          List<ItemEntity> AllItem = itemService.getAllItem();
-//          Assert.assertEquals(expectedItem.hashCode(),AllItem.hashCode());
-//          Assert.assertTrue(expectedItem.equals(AllItem));
-//      }
+    List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true),
+            new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true));
+
+    @Test
+    public void getAllItemTest() {
+        when(itemDao.getAllItem()).thenReturn(itemEntityList);
+        Assert.assertEquals(itemEntityList, itemService.getAllItem());
+    }
+
+
     @Test
     public void getItemByNameTest() {
         Item item = new Item();
@@ -149,4 +132,6 @@ public class ItemServiceTest {
 //        Assert.assertEquals(expectedItem.hashCode(),categoryItem.hashCode());
 //        Assert.assertTrue(expectedItem.equals(categoryItem));
 //    }
- }
+
+
+}
