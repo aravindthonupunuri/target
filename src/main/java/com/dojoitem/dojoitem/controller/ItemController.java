@@ -38,7 +38,7 @@ public class ItemController {
         Item item = itemService.getItemByName(name);
         return new ResponseEntity<>(item,HttpStatus.OK);
     }
-    @GetMapping(path = "item", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/item", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> getAllItem()
     {
         return new ResponseEntity(itemService.getAllItem(), HttpStatus.OK);
