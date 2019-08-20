@@ -2,6 +2,7 @@ package com.dojoitem.dojoitem.item;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Data
@@ -83,5 +84,23 @@ public class ItemEntity {
         this.category = category;
         this.image_url = image_url;
         this.sellable = sellable;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemEntity that = (ItemEntity) o;
+        return itemId == that.itemId &&
+                sellable == that.sellable &&
+                name.equals(that.name) &&
+                description.equals(that.description) &&
+                category.equals(that.category) &&
+                image_url.equals(that.image_url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId, name, description, category, image_url, sellable);
     }
 }

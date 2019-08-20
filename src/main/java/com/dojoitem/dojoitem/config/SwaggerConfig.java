@@ -1,4 +1,4 @@
-package com.dojoitem.dojoitem.controller;
+package com.dojoitem.dojoitem.config;
 
 import org.springframework.context.annotation.Bean;
         import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,12 @@ import org.springframework.context.annotation.Bean;
         import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
+    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("package com.dojoitem.dojoitem.controller"))
-                .paths(PathSelectors.regex("item/.*"))
+                        .basePackage("com.dojoitem.dojoitem.controller"))
+                .paths(PathSelectors.regex("/item/.*"))
                 .build().apiInfo(apiEndPointsInfo());
     }
     private ApiInfo apiEndPointsInfo() {

@@ -40,11 +40,11 @@ public class ItemService {
         ItemEntity itemEntity = itemDao.createItem(mapTo(item));
         return mapTo(itemEntity);
     }
-    private Item mapTo(ItemEntity itemEntity){
+    public Item mapTo(ItemEntity itemEntity){
         return new Item(itemEntity.getItemId(),itemEntity.getName(),itemEntity.getDescription(),itemEntity.getCategory(),itemEntity.getImage_url(),itemEntity.isSellable());
     }
 
-    private ItemEntity mapTo(Item item){
+    public ItemEntity mapTo(Item item){
         return new ItemEntity(item.getItemId(),item.getName(),item.getDescription(),item.getCategory(),item.getImage_url(),item.isSellable());
     }
     public Item getItem(int item_Id){
@@ -60,9 +60,10 @@ public class ItemService {
     {
         return itemDao.updateItem(mapTo(item));
     }
-    public void deleteItem(int item_Id){
+    public Item deleteItem(int item_Id){
        itemDao.deleteItem(item_Id);
 
+        return null;
     }
 
 
