@@ -44,13 +44,20 @@ public class ItemDao {
 
     public ItemEntity getItem(int itemKey) {
 
-        try {
-           if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
+//        try {
+//           if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
+//                  return itemRepository.getOne(itemKey);
+//        }catch (Exception e){
+//           return exception;
+//        }
+//return exception;
+       // return itemRepository.getOne(itemKey);
+                try {
+           //if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
                   return itemRepository.getOne(itemKey);
         }catch (Exception e){
            return exception;
         }
-return exception;
     }
 
     public ItemEntity addItem (ItemEntity itemEntity){
