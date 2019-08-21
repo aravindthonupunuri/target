@@ -2,6 +2,7 @@ package com.dojoitem.dojoitem.dao;
 
 import com.dojoitem.dojoitem.item.ItemEntity;
 import com.dojoitem.dojoitem.repository.ItemRepository;
+import org.hibernate.service.NullServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
@@ -40,24 +41,12 @@ public class ItemDao {
         return itemEntityList;
     }
 
-    ItemEntity exception = new ItemEntity(-1,"none","none","none","none",0);
-
     public ItemEntity getItem(int itemKey) {
+        ItemEntity itemEntity = itemRepository.getOne(itemKey);
+        if(itemEntity==null)
+            throw new NullPointerException("Item not found");
+           return itemEntity;
 
-//        try {
-//           if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
-//                  return itemRepository.getOne(itemKey);
-//        }catch (Exception e){
-//           return exception;
-//        }
-//return exception;
-       // return itemRepository.getOne(itemKey);
-                try {
-           //if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
-                  return itemRepository.getOne(itemKey);
-        }catch (Exception e){
-           return exception;
-        }
     }
 
     public ItemEntity addItem (ItemEntity itemEntity){
@@ -80,16 +69,6 @@ public class ItemDao {
 
     public int updateItem (ItemEntity itemEntity){
 
-//        if(itemRepository.existsById(itemEntity.getItem_id())){
-//            itemRepository.save(itemEntity);
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }
-//    public void deleteItem(int item_Id){
-//        itemRepository.deleteById(item_Id);
 
         if(itemRepository.existsById(itemEntity.getItem_id())){
             itemRepository.save(itemEntity);
