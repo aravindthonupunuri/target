@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class Item {
-    @JsonProperty("itemId")
-    private int itemId;
+    @JsonProperty("item_id")
+    private int item_id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("description")
@@ -19,7 +19,7 @@ public class Item {
     private boolean sellable;
 
     public Item(int item_Id, String name, String description, String category, String image_url, boolean sellable) {
-        this.itemId = item_Id;
+        this.item_id = item_Id;
         this.name = name;
         this.description = description;
         this.category = category;
@@ -31,12 +31,12 @@ public class Item {
     }
 
 
-    public int getItemId() {
-        return itemId;
+    public int getItem_id() {
+        return item_id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
 
     public String getName() {
@@ -84,7 +84,7 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return itemId == item.itemId &&
+        return item_id == item.item_id &&
                 sellable == item.sellable &&
                 name.equals(item.name) &&
                 description.equals(item.description) &&
@@ -94,6 +94,6 @@ public class Item {
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, name, description, category, image_url, sellable);
+        return Objects.hash(item_id, name, description, category, image_url, sellable);
     }
 }

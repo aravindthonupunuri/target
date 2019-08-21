@@ -12,8 +12,8 @@ import java.util.Objects;
 public class ItemEntity {
 
 @Id
-@Column(name = "item_Id")
-    private int itemId;
+@Column(name = "item_id")
+    private int item_id;
 @Column(name = "name")
     private String name;
 @Column(name = "description")
@@ -29,12 +29,12 @@ public class ItemEntity {
     public ItemEntity() {
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getItem_id() {
+        return item_id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
 
     public String getName() {
@@ -77,8 +77,8 @@ public class ItemEntity {
         this.sellable = sellable;
     }
 
-    public ItemEntity(int itemId, String name, String description, String category, String image_url, boolean sellable) {
-        this.itemId = itemId;
+    public ItemEntity(int item_id, String name, String description, String category, String image_url, boolean sellable) {
+        this.item_id = item_id;
         this.name = name;
         this.description = description;
         this.category = category;
@@ -91,7 +91,7 @@ public class ItemEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemEntity that = (ItemEntity) o;
-        return itemId == that.itemId &&
+        return item_id == that.item_id &&
                 sellable == that.sellable &&
                 name.equals(that.name) &&
                 description.equals(that.description) &&
@@ -101,6 +101,6 @@ public class ItemEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, name, description, category, image_url, sellable);
+        return Objects.hash(item_id, name, description, category, image_url, sellable);
     }
 }

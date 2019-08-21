@@ -65,7 +65,7 @@ public class ItemDao {
 
     public boolean updateItem (ItemEntity itemEntity){
 
-        if(itemRepository.existsById(itemEntity.getItemId())){
+        if(itemRepository.existsById(itemEntity.getItem_id())){
             itemRepository.save(itemEntity);
             return true;
         }

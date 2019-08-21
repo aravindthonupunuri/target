@@ -43,28 +43,28 @@ public class ItemController {
     {
         return new ResponseEntity(itemService.getAllItem(), HttpStatus.OK);
     }
-    @GetMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Item> getItem(@PathVariable int item_Id) {
-        Item item = itemService.getItem(item_Id);
+    @GetMapping(path = "item/{item_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Item> getItem(@PathVariable int item_id) {
+        Item item = itemService.getItem(item_id);
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
 
-    @PostMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Item> addItem(@PathVariable int item_Id, @RequestBody Item itemRequest) {
+    @PostMapping(path = "item/{item_id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Item> addItem(@PathVariable int item_id, @RequestBody Item itemRequest) {
         return new ResponseEntity<>(itemService.addItem(itemRequest), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "item/{item_Id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> updateItem(@PathVariable int item_Id, @RequestBody Item itemRequest) {
+    @PutMapping(path = "item/{item_id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateItem(@PathVariable int item_id, @RequestBody Item itemRequest) {
         boolean state = itemService.updateItem(itemRequest);
         return new ResponseEntity<>("updatedItem" + state, HttpStatus.ACCEPTED);
 
     }
 
-    @DeleteMapping(path = "item/{item_Id}")
-    public void deleteItem(@PathVariable int item_Id){
-        itemService.deleteItem(item_Id);
+    @DeleteMapping(path = "item/{item_id}")
+    public void deleteItem(@PathVariable int item_id){
+        itemService.deleteItem(item_id);
     }
 
     public ItemService getItemService() {

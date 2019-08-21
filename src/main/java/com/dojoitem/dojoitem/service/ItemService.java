@@ -41,15 +41,16 @@ public class ItemService {
         return mapTo(itemEntity);
     }
     public Item mapTo(ItemEntity itemEntity){
-        return new Item(itemEntity.getItemId(),itemEntity.getName(),itemEntity.getDescription(),itemEntity.getCategory(),itemEntity.getImage_url(),itemEntity.isSellable());
+        return new Item(itemEntity.getItem_id(),itemEntity.getName(),itemEntity.getDescription(),itemEntity.getCategory(),itemEntity.getImage_url(),itemEntity.isSellable());
     }
 
     public ItemEntity mapTo(Item item){
-        return new ItemEntity(item.getItemId(),item.getName(),item.getDescription(),item.getCategory(),item.getImage_url(),item.isSellable());
+        return new ItemEntity(item.getItem_id(),item.getName(),item.getDescription(),item.getCategory(),item.getImage_url(),item.isSellable());
     }
-    public Item getItem(int item_Id){
-        ItemEntity itemEntity = itemDao.getItem(item_Id);
+    public Item getItem(int item_id){
+        ItemEntity itemEntity = itemDao.getItem(item_id);
         return mapTo(itemEntity);
+
     }
     public Item addItem(Item item)
     {
@@ -60,8 +61,8 @@ public class ItemService {
     {
         return itemDao.updateItem(mapTo(item));
     }
-    public void deleteItem(int item_Id){
-       itemDao.deleteItem(item_Id);
+    public void deleteItem(int item_id){
+       itemDao.deleteItem(item_id);
 
 
     }

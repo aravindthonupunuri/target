@@ -3,25 +3,15 @@ package com.dojoitem.dojoitem;
 import com.dojoitem.dojoitem.dao.ItemDao;
 import com.dojoitem.dojoitem.item.Item;
 import com.dojoitem.dojoitem.item.ItemEntity;
-import com.dojoitem.dojoitem.repository.ItemRepository;
 import com.dojoitem.dojoitem.service.ItemService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.MockMvc;
 
-import javax.swing.text.html.parser.Entity;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +29,9 @@ public class ItemServiceTest {
     @Mock
     //ItemRepository itemRepository;
             ItemDao itemDao;
+    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true);
+    List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true),
+            new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true));
 
     //    Item shirtItem;
     // @Mock
@@ -53,7 +46,7 @@ public class ItemServiceTest {
     @Test
     public void addItemTest() {
         Item item = new Item();
-        item.setItemId(35);
+        item.setItem_id(35);
         item.setName("Nike");
         item.setDescription("Sneakers");
         item.setCategory("shoes");
@@ -68,7 +61,7 @@ public class ItemServiceTest {
     @Test
     public void getItemTest() {
         Item item = new Item();
-        item.setItemId(35);
+        item.setItem_id(35);
         item.setName("Nike");
         item.setDescription("Sneakers");
         item.setCategory("shoes");
@@ -81,16 +74,13 @@ public class ItemServiceTest {
         Assert.assertEquals(expectedItem.hashCode(), addedItem.hashCode());
         Assert.assertTrue(expectedItem.equals(addedItem));
     }
-    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true);
-   @Test
-           public void deleteItemTest()
-   {
-       itemService.deleteItem(35);
-       verify(itemDao,times(1)).deleteItem(35);
-   }
 
-    List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true),
-            new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true));
+    @Test
+    public void deleteItemTest()
+    {
+        itemService.deleteItem(35);
+        verify(itemDao,times(1)).deleteItem(35);
+    }
 
     @Test
     public void getAllItemTest() {
@@ -102,7 +92,7 @@ public class ItemServiceTest {
     @Test
     public void getItemByNameTest() {
         Item item = new Item();
-        item.setItemId(35);
+        item.setItem_id(35);
         item.setName("Nike");
         item.setDescription("Sneakers");
         item.setCategory("shoes");
@@ -119,7 +109,7 @@ public class ItemServiceTest {
 //    @Test
 //    public void getItemByCategoryTest()  {
 //        Item item = new Item();
-//        item.setItemId(35);
+//        item.setItem_id(35);
 //        item.setName("Nike");
 //        item.setDescription("Sneakers");
 //        item.setCategory("shoes");
