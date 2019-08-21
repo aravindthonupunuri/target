@@ -16,9 +16,9 @@ public class Item {
     @JsonProperty("image_url")
     private String image_url;
     @JsonProperty("sellable")
-    private boolean sellable;
+    private int sellable;
 
-    public Item(int item_Id, String name, String description, String category, String image_url, boolean sellable) {
+    public Item(int item_Id, String name, String description, String category, String image_url, int sellable) {
         this.item_id = item_Id;
         this.name = name;
         this.description = description;
@@ -71,11 +71,11 @@ public class Item {
         this.image_url = image_url;
     }
 
-    public boolean isSellable() {
+    public int isSellable() {
         return sellable;
     }
 
-    public void setSellable(boolean sellable) {
+    public void setSellable(int sellable) {
         this.sellable = sellable;
     }
 

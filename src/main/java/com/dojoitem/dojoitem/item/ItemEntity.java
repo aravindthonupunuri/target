@@ -24,7 +24,7 @@ public class ItemEntity {
     private String image_url;
 @Column(name = "sellable")
 
-    private boolean sellable;
+    private int sellable;
 
     public ItemEntity() {
     }
@@ -69,15 +69,15 @@ public class ItemEntity {
         this.image_url = image_url;
     }
 
-    public boolean isSellable() {
+    public int isSellable() {
         return sellable;
     }
 
-    public void setSellable(boolean sellable) {
+    public void setSellable(int sellable) {
         this.sellable = sellable;
     }
 
-    public ItemEntity(int item_id, String name, String description, String category, String image_url, boolean sellable) {
+    public ItemEntity(int item_id, String name, String description, String category, String image_url,int sellable) {
         this.item_id = item_id;
         this.name = name;
         this.description = description;
