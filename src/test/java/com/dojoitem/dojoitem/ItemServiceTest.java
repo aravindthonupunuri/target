@@ -29,9 +29,9 @@ public class ItemServiceTest {
     @Mock
     //ItemRepository itemRepository;
             ItemDao itemDao;
-    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true);
-    List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true),
-            new ItemEntity(35, "nike", "sneakers", "shoes", "htt", true));
+    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1);
+    List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1),
+            new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1));
 
     //    Item shirtItem;
     // @Mock
@@ -51,7 +51,7 @@ public class ItemServiceTest {
         item.setDescription("Sneakers");
         item.setCategory("shoes");
         item.setImage_url("http://hsdg");
-        item.setSellable(true);
+        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.addItem(itemEntity)).thenReturn(itemEntity);
         Item addedItem = itemService.addItem(item);
@@ -66,7 +66,7 @@ public class ItemServiceTest {
         item.setDescription("Sneakers");
         item.setCategory("shoes");
         item.setImage_url("http://hsdg");
-        item.setSellable(true);
+        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItem(35)).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);
@@ -97,7 +97,7 @@ public class ItemServiceTest {
         item.setDescription("Sneakers");
         item.setCategory("shoes");
         item.setImage_url("http://hsdg");
-        item.setSellable(true);
+        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItemByName("Nike")).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);

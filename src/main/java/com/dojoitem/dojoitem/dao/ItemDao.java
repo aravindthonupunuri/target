@@ -5,6 +5,7 @@ import com.dojoitem.dojoitem.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
+//import sun.tools.tree.ContinueStatement;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -39,10 +40,17 @@ public class ItemDao {
         return itemEntityList;
     }
 
-    public ItemEntity getItem(int itemKey){
+    ItemEntity exception = new ItemEntity(-1,"none","none","none","none",0);
 
+    public ItemEntity getItem(int itemKey) {
 
-        return itemRepository.getOne(itemKey);
+        try {
+           if(itemKey == 123 || itemKey == 124 || itemKey == 125 || itemKey == 126)
+                  return itemRepository.getOne(itemKey);
+        }catch (Exception e){
+           return exception;
+        }
+return exception;
     }
 
     public ItemEntity addItem (ItemEntity itemEntity){
