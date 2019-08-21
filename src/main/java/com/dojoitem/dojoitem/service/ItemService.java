@@ -57,7 +57,7 @@ public class ItemService {
         ItemEntity itemEntity=itemDao.addItem(mapTo(item));
         return mapTo(itemEntity);
     }
-    public boolean updateItem(Item item)
+    public int updateItem(Item item)
     {
         return itemDao.updateItem(mapTo(item));
     }

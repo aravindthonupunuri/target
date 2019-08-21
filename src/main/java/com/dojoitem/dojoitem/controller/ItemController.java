@@ -57,7 +57,7 @@ public class ItemController {
 
     @PutMapping(path = "item/{item_id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateItem(@PathVariable int item_id, @RequestBody Item itemRequest) {
-        boolean state = itemService.updateItem(itemRequest);
+        int state = itemService.updateItem(itemRequest);
         return new ResponseEntity<>("updatedItem" + state, HttpStatus.ACCEPTED);
 
     }

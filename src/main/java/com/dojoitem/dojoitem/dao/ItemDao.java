@@ -63,20 +63,29 @@ public class ItemDao {
         return Objects.hash(itemRepository);
     }
 
-    public boolean updateItem (ItemEntity itemEntity){
+    public int updateItem (ItemEntity itemEntity){
+
+//        if(itemRepository.existsById(itemEntity.getItem_id())){
+//            itemRepository.save(itemEntity);
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }
+//    public void deleteItem(int item_Id){
+//        itemRepository.deleteById(item_Id);
 
         if(itemRepository.existsById(itemEntity.getItem_id())){
             itemRepository.save(itemEntity);
-            return true;
+            return 1;
         }
         else{
-            return false;
+            return 0;
         }
     }
     public void deleteItem(int item_Id){
         itemRepository.deleteById(item_Id);
-
-
     }
 
 
