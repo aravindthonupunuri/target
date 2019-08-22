@@ -1,6 +1,7 @@
 package com.dojoitem.dojoitem.dao;
 
-import Exception.ItemNotFoundException;
+
+import com.dojoitem.dojoitem.exception.DataNotFoundException;
 import com.dojoitem.dojoitem.item.ItemEntity;
 import com.dojoitem.dojoitem.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class ItemDao {
         if(itemEntity==null)
         {
             System.out.println("not found");
-            throw new ItemNotFoundException("Item not Found");
+            throw new DataNotFoundException("Item not Found");
         }
         return itemEntity;
 
