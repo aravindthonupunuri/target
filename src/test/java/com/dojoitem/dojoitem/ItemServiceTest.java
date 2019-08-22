@@ -27,31 +27,13 @@ public class ItemServiceTest {
     ItemService itemService;
 
     @Mock
-    //ItemRepository itemRepository;
-            ItemDao itemDao;
-    ItemEntity shoeEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1);
+    ItemDao itemDao;
     List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1),
             new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1));
-
-    //    Item shirtItem;
-    // @Mock
-    //private ItemRepository itemRepository;
-//    private List<Item> item;
-//    private Item shirtItem;
-//    @Before
-//    public void setup(){
-//        shirtItem = new Item(12346,"shirt","cloth","wear","htrto",true);
-//       //item1 = new Item(1234566890,"ghhfj","DFGHJB","FGHJHGF","HGFFGH",true);
-//    }
+   ItemEntity itemEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1);
+   Item item=new Item(35, "puma", "sneakers", "shoes", "htt", 1);
     @Test
     public void addItemTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.addItem(itemEntity)).thenReturn(itemEntity);
         Item addedItem = itemService.addItem(item);
@@ -60,13 +42,6 @@ public class ItemServiceTest {
 
     @Test
     public void getItemTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItem(35)).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);
@@ -91,13 +66,6 @@ public class ItemServiceTest {
 
     @Test
     public void getItemByNameTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItemByName("Nike")).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);
@@ -106,23 +74,16 @@ public class ItemServiceTest {
         Assert.assertTrue(expectedItem.equals(addedItem));
     }
 
-
-//    @Test
-//    public void getItemByCategoryTest()  {
-//        Item item = new Item();
-//        item.setItem_id(35);
-//        item.setName("Nike");
-//        item.setDescription("Sneakers");
-//        item.setCategory("shoes");
-//        item.setImage_url("http://hsdg");
-//        item.setSellable(true);
-//        List<ItemEntity> itemEntityList = (List<ItemEntity>) itemService.mapTo(item);
-//        when(itemDao.getAllItemByCategory("shoes")).thenReturn(itemEntityList);
-//        Item expectedItem = (Item) itemService.getAllItemByCategory(String.valueOf(itemEntityList));
-//        Item categoryItem = (Item) itemService.getAllItemByCategory("shoes");
-//        Assert.assertEquals(expectedItem.hashCode(),categoryItem.hashCode());
-//        Assert.assertTrue(expectedItem.equals(categoryItem));
-//    }
+    @Test
+    public void getItemByCategoryTest()  {
+        when(itemDao.getAllItemByCategory("Sneakers")).thenReturn(itemEntityList);
+        Assert.assertEquals(itemEntityList, itemService.getAllItemByCategory("Sneakers"));
+    }
+    @Test
+    public void updateItemTest() {
 
 
+    Assert.assertEquals(0,itemService.updateItem(item));
+
+    }
 }

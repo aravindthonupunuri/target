@@ -1,7 +1,5 @@
 package com.dojoitem.dojoitem.item;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Objects;
 
 public class Item {
