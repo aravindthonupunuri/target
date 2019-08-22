@@ -1,11 +1,13 @@
 package com.dojoitem.dojoitem.service;
 
 import com.dojoitem.dojoitem.dao.ItemDao;
+import com.dojoitem.dojoitem.exception.DataNotFoundException;
 import com.dojoitem.dojoitem.item.Item;
 import com.dojoitem.dojoitem.item.ItemEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Null;
 import java.util.List;
 
 //import com.dojoitem.dojoitem.item.*;
@@ -49,8 +51,14 @@ public class ItemService {
     }
     public Item getItem(int item_id){
         ItemEntity itemEntity = itemDao.getItem(item_id);
-        return mapTo(itemEntity);
+       // return mapTo(itemEntity);
 
+        if(itemEntity == null){
+            throw new DataNotFoundException("Message with id "+item_id+"not found");
+
+        }
+        else
+            return mapTo(itemEntity);
     }
     public Item addItem(Item item)
     {

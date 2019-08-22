@@ -42,10 +42,10 @@ public class ItemDao {
     }
 
     public ItemEntity getItem(int itemKey) {
-        ItemEntity itemEntity = itemRepository.getOne(itemKey);
-        if(itemEntity==null)
-            throw new NullPointerException("Item not found");
-           return itemEntity;
+        return itemRepository.getOne(itemKey);
+//        if(itemEntity==null)
+//            throw new NullPointerException("Item not found");
+//           return itemEntity;
 
     }
 

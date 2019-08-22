@@ -106,6 +106,7 @@ public class ItemServiceTest {
         Assert.assertTrue(expectedItem.equals(addedItem));
     }
 
+
 //    @Test
 //    public void getItemByCategoryTest()  {
 //        Item item = new Item();
