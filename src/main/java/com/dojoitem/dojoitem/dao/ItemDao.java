@@ -69,14 +69,14 @@ public class ItemDao {
 
     public int updateItem (ItemEntity itemEntity){
 
-
-        if(itemRepository.existsById(itemEntity.getItem_id())){
+       if(itemRepository.existsById(itemEntity.getItem_id())){
             itemRepository.save(itemEntity);
             return 1;
         }
-        else{
-            return 0;
-        }
+       else{
+           return 0;
+       }
+
     }
     public void deleteItem(int item_Id){
         itemRepository.deleteById(item_Id);

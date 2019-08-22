@@ -30,16 +30,10 @@ public class ItemServiceTest {
     ItemDao itemDao;
     List<ItemEntity> itemEntityList = Arrays.asList(new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1),
             new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1));
-
+   ItemEntity itemEntity = new ItemEntity(35, "nike", "sneakers", "shoes", "htt", 1);
+   Item item=new Item(35, "puma", "sneakers", "shoes", "htt", 1);
     @Test
     public void addItemTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.addItem(itemEntity)).thenReturn(itemEntity);
         Item addedItem = itemService.addItem(item);
@@ -48,13 +42,6 @@ public class ItemServiceTest {
 
     @Test
     public void getItemTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItem(35)).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);
@@ -79,13 +66,6 @@ public class ItemServiceTest {
 
     @Test
     public void getItemByNameTest() {
-        Item item = new Item();
-        item.setItem_id(35);
-        item.setName("Nike");
-        item.setDescription("Sneakers");
-        item.setCategory("shoes");
-        item.setImage_url("http://hsdg");
-        item.setSellable(1);
         ItemEntity itemEntity = itemService.mapTo(item);
         when(itemDao.getItemByName("Nike")).thenReturn(itemEntity);
         Item expectedItem = itemService.mapTo(itemEntity);
@@ -99,6 +79,10 @@ public class ItemServiceTest {
         when(itemDao.getAllItemByCategory("Sneakers")).thenReturn(itemEntityList);
         Assert.assertEquals(itemEntityList, itemService.getAllItemByCategory("Sneakers"));
     }
+    @Test
+    public void updateItemTest() {
 
+    Assert.assertEquals(0,itemService.updateItem(item));
 
+    }
 }
