@@ -8,7 +8,9 @@ pipeline:
     secrets: [ docker_username, docker_password ]
     registry: docker.target.com
     repo: docker.target.com/dojo-bootcamp/dojoitem
-    tag: latest
+    tag:
+      - latest
+      - "b${DRONE_BUILD_NUMBER}-${DRONE_COMMIT:0:8}"
     Dockerfile: Dockerfile
 
 
