@@ -1,9 +1,12 @@
 package com.dojoitem.dojoitem.item;
 
 import lombok.Data;
-import javax.persistence.*;
-import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -11,18 +14,18 @@ import java.util.Objects;
 
 public class ItemEntity {
 
-@Id
-@Column(name = "item_id")
+    @Id
+    @Column(name = "item_id")
     private int item_id;
-@Column(name = "name")
+    @Column(name = "name")
     private String name;
-@Column(name = "description")
+    @Column(name = "description")
     private String description;
-@Column(name = "category")
+    @Column(name = "category")
     private String category;
-@Column(name = "image_url")
+    @Column(name = "image_url")
     private String image_url;
-@Column(name = "sellable")
+    @Column(name = "sellable")
 
     private int sellable;
 

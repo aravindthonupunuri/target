@@ -1,17 +1,14 @@
 package com.dojoitem.dojoitem.dao;
 
+import Exception.ItemNotFoundException;
 import com.dojoitem.dojoitem.item.ItemEntity;
 import com.dojoitem.dojoitem.repository.ItemRepository;
-import org.hibernate.service.NullServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
-//import sun.tools.tree.ContinueStatement;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
-
 @Repository
 @Configuration
 public class ItemDao {
@@ -44,8 +41,11 @@ public class ItemDao {
     public ItemEntity getItem(int itemKey) {
         ItemEntity itemEntity = itemRepository.getOne(itemKey);
         if(itemEntity==null)
-            throw new NullPointerException("Item not found");
-           return itemEntity;
+        {
+            System.out.println("not found");
+            throw new ItemNotFoundException("Item not Found");
+        }
+        return itemEntity;
 
     }
 
@@ -88,11 +88,7 @@ public class ItemDao {
         List<ItemEntity> itemEntityList = itemRepository.findByCategory(category);
         return itemEntityList;
     }
-
-
     public void setItemRepository(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
-
-
 }

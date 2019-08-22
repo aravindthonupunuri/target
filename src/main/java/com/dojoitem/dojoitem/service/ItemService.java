@@ -8,28 +8,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//import com.dojoitem.dojoitem.item.*;
 @Service
 public class ItemService {
     @Autowired
     ItemDao itemDao;
-   public Item getItemByName(String name){
-       ItemEntity itemEntity = itemDao.getItemByName(name);
-       return mapTo(itemEntity);
-   }
-
+    public Item getItemByName(String name){
+        ItemEntity itemEntity = itemDao.getItemByName(name);
+        return mapTo(itemEntity);
+    }
     public List<ItemEntity> getAllItem()
     {
-//    List<ItemEntity> itemEntityList= itemRepository.findAll();
         List<ItemEntity> itemEntityList = itemDao.getAllItem();
-        // return (List<Item>)(List<?>)itemEntityList;
         return itemEntityList;
     }
     public List<ItemEntity> getAllItemByCategory(String category) {
-       List<ItemEntity> itemEntityList = itemDao.getAllItemByCategory(category);
+        List<ItemEntity> itemEntityList = itemDao.getAllItemByCategory(category);
         return itemEntityList;
     }
-
     public ItemService(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
@@ -50,7 +45,6 @@ public class ItemService {
     public Item getItem(int item_id){
         ItemEntity itemEntity = itemDao.getItem(item_id);
         return mapTo(itemEntity);
-
     }
     public Item addItem(Item item)
     {
@@ -62,12 +56,8 @@ public class ItemService {
         return itemDao.updateItem(mapTo(item));
     }
     public void deleteItem(int item_id){
-       itemDao.deleteItem(item_id);
-
-
+        itemDao.deleteItem(item_id);
     }
-
-
     public ItemDao getItemDao() {
         return itemDao;
     }
@@ -75,6 +65,4 @@ public class ItemService {
     public void setItemDao(ItemDao itemDao) {
         this.itemDao = itemDao;
     }
-
-
 }
