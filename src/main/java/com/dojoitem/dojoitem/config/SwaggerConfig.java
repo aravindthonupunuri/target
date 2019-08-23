@@ -15,7 +15,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors
                         .basePackage("com.dojoitem.dojoitem.controller"))
-                .paths(PathSelectors.regex("/item/.*"))
+                .paths(PathSelectors.regex("/item.*"))
                 .build().apiInfo(apiEndPointsInfo());
     }
     private ApiInfo apiEndPointsInfo() {
